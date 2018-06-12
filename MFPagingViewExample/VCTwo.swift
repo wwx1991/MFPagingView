@@ -23,7 +23,7 @@ class VCTwo: UIViewController {
         return pageTitleView
     }()
     
-    private lazy var pageTitleContentView: MFPageContentView = {
+    private lazy var pageContentView: MFPageContentView = {
         var childControllers = [UIViewController]()
         for _ in 0..<10 {
             let vc = UIViewController()
@@ -34,24 +34,24 @@ class VCTwo: UIViewController {
             childControllers.append(vc)
         }
         
-        let pageTitleContentViewY = pageTitleView.frame.maxY
-        let pageTitleContentView = MFPageContentView(frame: CGRect(x: 0, y: pageTitleContentViewY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT-pageTitleContentViewY), parentVC: self, childVCs: childControllers)
-        pageTitleContentView.pageContentViewDelegate = self
-        return pageTitleContentView
+        let pageContentViewY = pageTitleView.frame.maxY
+        let pageContentView = MFPageContentView(frame: CGRect(x: 0, y: pageContentViewY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT-pageContentViewY), parentVC: self, childVCs: childControllers)
+        pageContentView.pageContentViewDelegate = self
+        return pageContentView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         view.addSubview(pageTitleView)
-        view.addSubview(pageTitleContentView)
+        view.addSubview(pageContentView)
     }
 
 }
 
 extension VCTwo: MFPageTitleViewDelegate, MFPageContentViewDelegate {
     func selectedIndexInPageTitleView(pageTitleView: MFPageTitleView, selectedIndex: Int) {
-        self.pageTitleContentView.setPageContentViewCurrentIndex(currentIndex: selectedIndex)
+        self.pageContentView.setPageContentViewCurrentIndex(currentIndex: selectedIndex)
     }
     func pageContentViewScroll(progress: CGFloat, originalIndex: Int, targetIndex: Int) {
         self.pageTitleView.setPageTitleView(progress: progress, originalIndex: originalIndex, targetIndex: targetIndex)
