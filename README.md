@@ -1,8 +1,8 @@
 # MFPagingView
-Swift 标题滚动视图布局样式<br>
-##效果图<br>
+
+## 效果图
 ![image](https://github.com/wwx1991/MFPagingView/blob/master/MFPagingView.gif)<br>
-##使用（详细使用，请参考Demo)
+## 使用（详细使用，请参考Demo)
 ```
         ///pageTitleView
         let config = MFPageTitleViewConfig()
@@ -19,7 +19,9 @@ Swift 标题滚动视图布局样式<br>
     func selectedIndexInPageTitleView(pageTitleView: MFPageTitleView, selectedIndex: Int) {
         self.pageContentView.setPageContentViewCurrentIndex(currentIndex: selectedIndex)
     }
+```
 * PageContentViewDelegate
+```
     func pageContentViewScroll(progress: CGFloat, originalIndex: Int, targetIndex: Int) {
         self.pageTitleView.setPageTitleView(progress: progress, originalIndex: originalIndex, targetIndex: targetIndex)
     }
