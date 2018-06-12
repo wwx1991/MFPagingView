@@ -8,11 +8,12 @@
         let config = MFPageTitleViewConfig()
         let pageTitleView = MFPageTitleView(frame: CGRect(x: 0, y: navHeight, width: SCREEN_WIDTH, height: 41), titles: titles, config: config)
         pageTitleView.pageTitleViewDelegate = self
-        self.view.addSubview(pageTitleView)
+        view.addSubview(pageTitleView)
         
         ///pageContentView
-        let pageTitleContentView = MFPageContentView(frame: CGRect(x: 0, y: pageTitleContentViewY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT-pageTitleContentViewY), parentVC: self, childVCs: childControllers)
-        pageTitleContentView.pageContentViewDelegate = self
+        let pageContentView = MFPageContentView(frame: CGRect(x: 0, y: pageContentViewY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT-pageContentViewY), parentVC: self, childVCs: childControllers)
+        pageContentView.pageContentViewDelegate = self
+        view.addSubview(pageContentView)
 ```
 * PageTitleViewDelegate
 ```
